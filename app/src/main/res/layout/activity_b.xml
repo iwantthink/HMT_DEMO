@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+   <Button
+        android:id="@+id/bindMuid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="获取用户id" />
+  <Button
+        android:id="@+id/clientdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bindMuid"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="发送clientdata数据" />
+  <Button
+        android:id="@+id/tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/clientdata"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="发送httpClient数据" />
+	<Button
+        android:id="@+id/error1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tag"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="发送自动错误信息" />
+	<Button
+        android:id="@+id/error2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/error1"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="发送自定义错误信息" />
+	<Button
+        android:id="@+id/action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/error2"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="切换到webview" />
+	<Button
+        android:id="@+id/activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="切换activity，发送activity数据" />
+	<Button
+        android:id="@+id/reportModel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="发送act数据" />
+	<Button
+        android:id="@+id/reportModel0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reportModel1"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="发送OkHttp数据" />
+	<Button
+        android:id="@+id/baseUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reportModel0"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:text="发送网络请求" />
+</RelativeLayout>
