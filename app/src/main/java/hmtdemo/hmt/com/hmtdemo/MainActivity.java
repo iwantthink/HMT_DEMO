@@ -3,6 +3,7 @@ package hmtdemo.hmt.com.hmtdemo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -25,64 +26,71 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Context context;
-    private Button clientdDta;
-    private Button bindMuid;
-    private Button tag;
-    private Button error1;
-    private Button error2;
-    private Button action;
-    private Button activity;
-    private Button reportModel1;
-    private Button reportModel0;
-    private Button baseUrl;
+    private Context mContext;
+    private Button mBtnClientData;
+    private Button mBtnBindMuid;
+    private Button mBtnHttpClient;
+    private Button mBtnAutoError;
+    private Button mBtnManualError;
+    private Button mBtnChange2Webview;
+    private Button mBtnChangeActivity;
+    private Button mBtnSendAct;
+    private Button mBtnSendOkhttp;
+    private Button mBtnSendUrl;
     private Button mBtnChangeMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a);
-        context = this;
+        mContext = this;
         String[] strArr = new String[2];
         strArr[0] = "androidid";
         strArr[1] = "androidid1";
-        HMTAgent.Initialize(context, 1, strArr);
-        HMTAgent.onError(context); //监控页面错误信息
+        HMTAgent.Initialize(mContext, 1, strArr);
+        HMTAgent.onError(mContext); //监控页面错误信息
 
-        mBtnChangeMode = (Button) findViewById(R.id.btn_change_mode);
+        init();
+
+        initListener();
+
+    }
+
+    private void initListener() {
         mBtnChangeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeMode();
             }
         });
-
-        bindMuid = (Button) findViewById(R.id.bindMuid);
-        bindMuid.setOnClickListener(new View.OnClickListener() {
+        mBtnBindMuid.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                HMTAgent.bindMuid(context, "sanmu");
+//                HMTAgent.bindMuid(mContext, "sanmu");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Context c = mContext;
+                        SystemClock.sleep(2000);
+
+                    }
+                }).start();
             }
         });
 
-        clientdDta = (Button) findViewById(R.id.clientdata);
-        clientdDta.setOnClickListener(new View.OnClickListener() {
+        mBtnClientData.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                HMTAgent.postClientData(context);
+                HMTAgent.postClientData(mContext);
             }
         });
 
-        tag = (Button) findViewById(R.id.tag);
-        tag.setOnClickListener(new View.OnClickListener() {
+        mBtnHttpClient.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread() {
                     @Override
                     public void run() {
@@ -92,22 +100,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        error1 = (Button) findViewById(R.id.error1);
-        error1.setOnClickListener(new View.OnClickListener() {
+        mBtnAutoError.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 int i = 1 / 0;
             }
         });
 
-        error2 = (Button) findViewById(R.id.error2);
-        error2.setOnClickListener(new View.OnClickListener() {
+        mBtnManualError.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 try {
                     int i = 1 / 0;
                 } catch (Exception e) {
@@ -120,52 +124,44 @@ public class MainActivity extends AppCompatActivity {
                     property.setParams("addIntegral", a);
                     property.setParams("name", "error1");
                     property.setParams("name", "error2");
-                    HMTAgent.onError(context, e.getMessage(), property);
+                    HMTAgent.onError(mContext, e.getMessage(), property);
                 }
 
             }
         });
 
-        action = (Button) findViewById(R.id.action);
-        action.setOnClickListener(new View.OnClickListener() {
+        mBtnChange2Webview.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                jump_view();
+                jumpView();
             }
         });
 
-        activity = (Button) findViewById(R.id.activity);
-        activity.setOnClickListener(new View.OnClickListener() {
+        mBtnChangeActivity.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                jump_b();
+                jump2b();
             }
         });
 
-        reportModel1 = (Button) findViewById(R.id.reportModel1);
-        reportModel1.setOnClickListener(new View.OnClickListener() {
+        mBtnSendAct.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 HParams property = new HParams();
                 property.setParams("title", "百度新闻");
                 property.setParams("desc", "第一条新闻");
                 property.setParams("name", "error");
-                HMTAgent.onAction(context, "自定义事件", property);
+                HMTAgent.onAction(mContext, "自定义事件", property);
             }
         });
 
-        reportModel0 = (Button) findViewById(R.id.reportModel0);
-        reportModel0.setOnClickListener(new View.OnClickListener() {
+        mBtnSendOkhttp.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread() {
                     @Override
                     public void run() {
@@ -175,12 +171,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        baseUrl = (Button) findViewById(R.id.baseUrl);
-        baseUrl.setOnClickListener(new View.OnClickListener() {
+        mBtnSendUrl.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread() {
                     @Override
                     public void run() {
@@ -190,6 +184,20 @@ public class MainActivity extends AppCompatActivity {
                 }.start();
             }
         });
+    }
+
+    private void init() {
+        mBtnSendOkhttp = (Button) findViewById(R.id.btn_send_okhttp);
+        mBtnSendUrl = (Button) findViewById(R.id.btn_send_url);
+        mBtnSendAct = (Button) findViewById(R.id.btn_send_act);
+        mBtnChange2Webview = (Button) findViewById(R.id.btn_change2webview);
+        mBtnChangeActivity = (Button) findViewById(R.id.btn_change_activity);
+        mBtnManualError = (Button) findViewById(R.id.btn_manual_error);
+        mBtnAutoError = (Button) findViewById(R.id.btn_auto_error);
+        mBtnChangeMode = (Button) findViewById(R.id.btn_change_mode);
+        mBtnBindMuid = (Button) findViewById(R.id.btn_bind_muid);
+        mBtnClientData = (Button) findViewById(R.id.btn_client_data);
+        mBtnHttpClient = (Button) findViewById(R.id.btn_http_client);
 
     }
 
@@ -235,17 +243,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             if (is != null) {
                 try {
                     is.close();
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -257,29 +262,28 @@ public class MainActivity extends AppCompatActivity {
         return resultData;
     }
 
-    public void jump_b() {
+    public void jump2b() {
         Intent intent = new Intent(this, Activity_B.class);
         startActivity(intent);
         finish();
     }
 
-    public void jump_view() {
+    public void jumpView() {
         Intent intent = new Intent(this, ViewActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void changeMode() {
-        int mode = CommonUtil.getReportPolicyMode(context);
+        int mode = CommonUtil.getReportPolicyMode(mContext);
         Log.d("MainActivity", "mode:" + mode);
         if (mode == 0) {
-            CommonUtil.setReportPolicy(context, 1, "client");
-            CommonUtil.setReportPolicy(context, 1, "server");
-            Toast.makeText(context, "当前发送模式为 实时发送", Toast.LENGTH_SHORT).show();
+            CommonUtil.setReportPolicy(mContext, 1, "client");
+            CommonUtil.setReportPolicy(mContext, 1, "server");
+            Toast.makeText(mContext, "当前发送模式为 实时发送", Toast.LENGTH_SHORT).show();
         } else {
-            CommonUtil.setReportPolicy(context, 0, "client");
-            CommonUtil.setReportPolicy(context, 0, "server");
-            Toast.makeText(context, "当前发送模式为 启动时发送", Toast.LENGTH_SHORT).show();
+            CommonUtil.setReportPolicy(mContext, 0, "client");
+            CommonUtil.setReportPolicy(mContext, 0, "server");
+            Toast.makeText(mContext, "当前发送模式为 启动时发送", Toast.LENGTH_SHORT).show();
         }
     }
 

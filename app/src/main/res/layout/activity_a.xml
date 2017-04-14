@@ -8,81 +8,81 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
  <Button
-        android:id="@+id/bindMuid"
+        android:id="@+id/btn_bind_muid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="获取用户id" />
   <Button
-        android:id="@+id/clientdata"
+        android:id="@+id/btn_client_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/bindMuid"
+        android:layout_below="@id/btn_bind_muid"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送clientdata数据" />
   <Button
-        android:id="@+id/tag"
+        android:id="@+id/btn_http_client"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/clientdata"
+        android:layout_below="@id/btn_client_data"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送httpClient数据" />
 	<Button
-        android:id="@+id/error1"
+        android:id="@+id/btn_auto_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tag"
+        android:layout_below="@id/btn_http_client"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送自动错误信息" />
 	<Button
-        android:id="@+id/error2"
+        android:id="@+id/btn_manual_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/error1"
+        android:layout_below="@id/btn_auto_error"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送自定义错误信息" />
 	<Button
-        android:id="@+id/action"
+        android:id="@+id/btn_change2webview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/error2"
+        android:layout_below="@id/btn_manual_error"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="切换到webview" />
 	<Button
-        android:id="@+id/activity"
+        android:id="@+id/btn_change_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/action"
+        android:layout_below="@id/btn_change2webview"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="切换activity，发送activity数据" />
 	<Button
-        android:id="@+id/reportModel1"
+        android:id="@+id/btn_send_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity"
+        android:layout_below="@id/btn_change_activity"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送act数据" />
 	<Button
-        android:id="@+id/reportModel0"
+        android:id="@+id/btn_send_okhttp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/reportModel1"
+        android:layout_below="@id/btn_send_act"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送OkHttp数据" />
 	<Button
-        android:id="@+id/baseUrl"
+        android:id="@+id/btn_send_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/reportModel0"
+        android:layout_below="@id/btn_send_okhttp"
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送网络请求" />
@@ -91,7 +91,7 @@
 		android:id="@+id/btn_change_mode"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/baseUrl"
+		android:layout_below="@id/btn_send_url"
 		android:clickable="true"
 		android:layout_centerHorizontal="true"
 		android:text="改变发送模式" />

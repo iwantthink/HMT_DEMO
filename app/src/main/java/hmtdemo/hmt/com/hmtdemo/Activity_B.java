@@ -1,19 +1,13 @@
 package hmtdemo.hmt.com.hmtdemo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.hmt.analytics.HMTAgent;
-/*import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;*/
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +17,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Activity_B extends Activity {
+/*import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;*/
+
+public class Activity_B extends AppCompatActivity {
 
     private Context context;
     private Button clientdDta;
@@ -43,7 +43,7 @@ public class Activity_B extends Activity {
         context = this;
         HMTAgent.onError(context); //监控页面错误信息
 
-        bindMuid =(Button)findViewById(R.id.bindMuid);
+        bindMuid =(Button)findViewById(R.id.btn_bind_muid);
         bindMuid.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -53,7 +53,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        clientdDta = (Button)findViewById(R.id.clientdata);
+        clientdDta = (Button)findViewById(R.id.btn_client_data);
         clientdDta.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -63,7 +63,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        tag = (Button)findViewById(R.id.tag);
+        tag = (Button)findViewById(R.id.btn_http_client);
         tag.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -79,7 +79,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        error1 = (Button)findViewById(R.id.error1);
+        error1 = (Button)findViewById(R.id.btn_auto_error);
         error1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -89,7 +89,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        error2 = (Button)findViewById(R.id.error2);
+        error2 = (Button)findViewById(R.id.btn_manual_error);
         error2.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -104,7 +104,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        action = (Button)findViewById(R.id.action);
+        action = (Button)findViewById(R.id.btn_change2webview);
         action.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -114,7 +114,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        activity = (Button)findViewById(R.id.activity);
+        activity = (Button)findViewById(R.id.btn_change_activity);
         activity.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -124,7 +124,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        reportModel1 = (Button)findViewById(R.id.reportModel1);
+        reportModel1 = (Button)findViewById(R.id.btn_send_act);
         reportModel1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -134,7 +134,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        reportModel0 = (Button)findViewById(R.id.reportModel0);
+        reportModel0 = (Button)findViewById(R.id.btn_send_okhttp);
         reportModel0.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -150,7 +150,7 @@ public class Activity_B extends Activity {
             }
         });
 
-        baseUrl = (Button)findViewById(R.id.baseUrl);
+        baseUrl = (Button)findViewById(R.id.btn_send_url);
         baseUrl.setOnClickListener(new View.OnClickListener() {
 
             @Override
