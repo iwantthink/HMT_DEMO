@@ -86,4 +86,13 @@
         android:clickable="true"
         android:layout_centerHorizontal="true"
         android:text="发送网络请求" />
+
+	<Button
+		android:id="@+id/btn_change_mode"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/baseUrl"
+		android:clickable="true"
+		android:layout_centerHorizontal="true"
+		android:text="改变发送模式" />
 </RelativeLayout>
