@@ -1,7 +1,6 @@
 package hmtdemo.hmt.com.hmtdemo;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.squareup.leakcanary.LeakCanary;
 
@@ -19,6 +18,5 @@ public class BaseApplication extends Application {
             return;
         }
         LeakCanary.install(this);
-        Log.d("BaseApplication", "leakcanary.install");
     }
 }
