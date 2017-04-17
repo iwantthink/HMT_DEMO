@@ -49,11 +49,8 @@ public class MainActivity extends AppCompatActivity {
         strArr[1] = "androidid1";
         HMTAgent.Initialize(mContext, 1, strArr);
         HMTAgent.onError(mContext); //监控页面错误信息
-
         init();
-
         initListener();
-
     }
 
     private void initListener() {
@@ -73,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         Context c = mContext;
                         SystemClock.sleep(2000);
-
                     }
                 }).start();
             }
@@ -126,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
                     property.setParams("name", "error2");
                     HMTAgent.onError(mContext, e.getMessage(), property);
                 }
-
             }
         });
 
