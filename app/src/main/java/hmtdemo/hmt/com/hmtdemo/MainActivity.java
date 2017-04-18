@@ -44,13 +44,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a);
         mContext = this;
+        initHMT();
+        init();
+        initListener();
+    }
+
+    private void initHMT() {
         String[] strArr = new String[2];
         strArr[0] = "androidid";
         strArr[1] = "androidid1";
         HMTAgent.Initialize(mContext, 1, strArr);
         HMTAgent.onError(mContext); //监控页面错误信息
-        init();
-        initListener();
     }
 
     private void initListener() {
@@ -137,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                jump2b();
+                jump2Seconed();
             }
         });
 
@@ -257,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
         return resultData;
     }
 
-    public void jump2b() {
+    public void jump2Seconed() {
         Intent intent = new Intent(this, SeconedActivity.class);
         startActivity(intent);
         finish();

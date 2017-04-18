@@ -17,15 +17,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/*import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;*/
 
 public class SeconedActivity extends AppCompatActivity {
 
-    private Context context;
+    private Context mContext;
     private Button clientdDta;
     private Button bindMuid;
     private Button tag;
@@ -36,75 +31,75 @@ public class SeconedActivity extends AppCompatActivity {
     private Button reportModel1;
     private Button reportModel0;
     private Button baseUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b);
-        context = this;
-        HMTAgent.onError(context); //监控页面错误信息
+        mContext = this;
+        HMTAgent.onError(mContext); //监控页面错误信息
 
-        bindMuid =(Button)findViewById(R.id.btn_bind_muid);
+        bindMuid = (Button) findViewById(R.id.btn_bind_muid);
         bindMuid.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                HMTAgent.bindMuid(context,"sanmu");
+                HMTAgent.bindMuid(mContext, "sanmu");
             }
         });
 
-        clientdDta = (Button)findViewById(R.id.btn_client_data);
+        clientdDta = (Button) findViewById(R.id.btn_client_data);
         clientdDta.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                HMTAgent.postClientData(context);
+                HMTAgent.postClientData(mContext);
             }
         });
 
-        tag = (Button)findViewById(R.id.btn_http_client);
+        tag = (Button) findViewById(R.id.btn_http_client);
         tag.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new Thread(){
+                new Thread() {
                     @Override
-                    public void run()
-                    {
-                     //NetworkUitlity.get("http://www.baidu.com");
+                    public void run() {
+                        //NetworkUitlity.get("http://www.baidu.com");
                     }
                 }.start();
             }
         });
 
-        error1 = (Button)findViewById(R.id.btn_auto_error);
+        error1 = (Button) findViewById(R.id.btn_auto_error);
         error1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                int i = 1/0;
+                int i = 1 / 0;
             }
         });
 
-        error2 = (Button)findViewById(R.id.btn_manual_error);
+        error2 = (Button) findViewById(R.id.btn_manual_error);
         error2.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                try{
-                    int i = 1/0;
-                }catch(Exception e){
-                    HMTAgent.onError(context,e.getMessage());
+                try {
+                    int i = 1 / 0;
+                } catch (Exception e) {
+                    HMTAgent.onError(mContext, e.getMessage());
                 }
 
             }
         });
 
-        action = (Button)findViewById(R.id.btn_change2webview);
+        action = (Button) findViewById(R.id.btn_change2webview);
         action.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -114,7 +109,7 @@ public class SeconedActivity extends AppCompatActivity {
             }
         });
 
-        activity = (Button)findViewById(R.id.btn_change_activity);
+        activity = (Button) findViewById(R.id.btn_change_activity);
         activity.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -124,42 +119,40 @@ public class SeconedActivity extends AppCompatActivity {
             }
         });
 
-        reportModel1 = (Button)findViewById(R.id.btn_send_act);
+        reportModel1 = (Button) findViewById(R.id.btn_send_act);
         reportModel1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                HMTAgent.onAction(context, "自定义事件");
+                HMTAgent.onAction(mContext, "自定义事件");
             }
         });
 
-        reportModel0 = (Button)findViewById(R.id.btn_send_okhttp);
+        reportModel0 = (Button) findViewById(R.id.btn_send_okhttp);
         reportModel0.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new Thread(){
+                new Thread() {
                     @Override
-                    public void run()
-                    {
-                       // sendOkHttp("http://www.baidu.com");
+                    public void run() {
+                        // sendOkHttp("http://www.baidu.com");
                     }
                 }.start();
             }
         });
 
-        baseUrl = (Button)findViewById(R.id.btn_send_url);
+        baseUrl = (Button) findViewById(R.id.btn_send_url);
         baseUrl.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new Thread(){
+                new Thread() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         String str = getURLResponse("http://www.baidu.com");
                         System.out.print(str);
                     }
@@ -168,12 +161,13 @@ public class SeconedActivity extends AppCompatActivity {
         });
     }
 
-    public void jump_b(){
+    public void jump_b() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
-    public void jump_view(){
+
+    public void jump_view() {
         Intent intent = new Intent(this, ViewActivity.class);
         startActivity(intent);
         //finish();
@@ -201,13 +195,13 @@ public class SeconedActivity extends AppCompatActivity {
         });
     }*/
 
-    private String getURLResponse(String urlString){
+    private String getURLResponse(String urlString) {
         HttpURLConnection conn = null;
         InputStream is = null;
         String resultData = "";
         try {
             URL url = new URL(urlString);
-            conn = (HttpURLConnection)url.openConnection();
+            conn = (HttpURLConnection) url.openConnection();
             conn.setDoInput(true);
             conn.setDoOutput(true);
             conn.setUseCaches(false);
@@ -215,27 +209,24 @@ public class SeconedActivity extends AppCompatActivity {
             is = conn.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader bufferReader = new BufferedReader(isr);
-            String inputLine  = "";
-            while((inputLine = bufferReader.readLine()) != null){
+            String inputLine = "";
+            while ((inputLine = bufferReader.readLine()) != null) {
                 resultData += inputLine + "\n";
             }
 
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-        }catch (IOException e) {
-            // TODO Auto-generated catch block
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally{
-            if(is != null){
+        } finally {
+            if (is != null) {
                 try {
                     is.close();
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
-            if(conn != null){
+            if (conn != null) {
                 conn.disconnect();
             }
         }
