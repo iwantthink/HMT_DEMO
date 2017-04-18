@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewActivity"/>
-        <activity android:name=".Activity_B"/>
+        <activity android:name=".SeconedActivity"/>
         <meta-data android:name="HMT_APPKEY" android:value="YOUR_APP_KEY" />
         <meta-data android:name="HMT_CHANNEL" android:value="YOUR_CHANNEL" />
         <meta-data android:name="HMT_TRACKEDURL" android:value="*" />

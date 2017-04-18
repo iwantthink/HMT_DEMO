@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jump2b() {
-        Intent intent = new Intent(this, Activity_B.class);
+        Intent intent = new Intent(this, SeconedActivity.class);
         startActivity(intent);
         finish();
     }

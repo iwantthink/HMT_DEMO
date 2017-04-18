@@ -23,7 +23,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;*/
 
-public class Activity_B extends AppCompatActivity {
+public class SeconedActivity extends AppCompatActivity {
 
     private Context context;
     private Button clientdDta;
