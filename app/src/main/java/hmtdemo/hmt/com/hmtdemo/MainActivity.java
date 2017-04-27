@@ -23,30 +23,57 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.btn_bind_muid)
+    Button mBtnBindMuid;
+    @BindView(R.id.btn_client_data)
+    Button mBtnClientData;
+    @BindView(R.id.btn_http_client)
+    Button mBtnHttpClient;
+    @BindView(R.id.btn_auto_error)
+    Button mBtnAutoError;
+    @BindView(R.id.btn_manual_error)
+    Button mBtnManualError;
+    @BindView(R.id.btn_change2webview)
+    Button mBtnChange2webview;
+    @BindView(R.id.btn_change_activity)
+    Button mBtnChangeActivity;
+    @BindView(R.id.btn_send_act)
+    Button mBtnSendAct;
+    @BindView(R.id.btn_send_okhttp)
+    Button mBtnSendOkhttp;
+    @BindView(R.id.btn_send_url)
+    Button mBtnSendUrl;
+    @BindView(R.id.btn_change_mode)
+    Button mBtnChangeMode;
     private Context mContext;
-    private Button mBtnClientData;
-    private Button mBtnBindMuid;
-    private Button mBtnHttpClient;
-    private Button mBtnAutoError;
-    private Button mBtnManualError;
-    private Button mBtnChange2Webview;
-    private Button mBtnChangeActivity;
-    private Button mBtnSendAct;
-    private Button mBtnSendOkhttp;
-    private Button mBtnSendUrl;
-    private Button mBtnChangeMode;
+//    private Button mBtnClientData;
+//    private Button mBtnBindMuid;
+//    private Button mBtnHttpClient;
+//    private Button mBtnAutoError;
+//    private Button mBtnManualError;
+//    private Button mBtnChange2Webview;
+//    private Button mBtnChangeActivity;
+//    private Button mBtnSendAct;
+//    private Button mBtnSendOkhttp;
+//    private Button mBtnSendUrl;
+//    private Button mBtnChangeMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a);
+        ButterKnife.bind(this);
         mContext = this;
         initHMT();
         init();
         initListener();
+
     }
 
     private void initHMT() {
@@ -72,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Context c = mContext;
                         SystemClock.sleep(2000);
                     }
                 }).start();
@@ -104,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                int i = 1 / 0;
+//                int i = 1 / 0;
             }
         });
 
@@ -129,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mBtnChange2Webview.setOnClickListener(new View.OnClickListener() {
+        mBtnChange2webview.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -186,17 +212,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        mBtnSendOkhttp = (Button) findViewById(R.id.btn_send_okhttp);
-        mBtnSendUrl = (Button) findViewById(R.id.btn_send_url);
-        mBtnSendAct = (Button) findViewById(R.id.btn_send_act);
-        mBtnChange2Webview = (Button) findViewById(R.id.btn_change2webview);
-        mBtnChangeActivity = (Button) findViewById(R.id.btn_change_activity);
-        mBtnManualError = (Button) findViewById(R.id.btn_manual_error);
-        mBtnAutoError = (Button) findViewById(R.id.btn_auto_error);
-        mBtnChangeMode = (Button) findViewById(R.id.btn_change_mode);
-        mBtnBindMuid = (Button) findViewById(R.id.btn_bind_muid);
-        mBtnClientData = (Button) findViewById(R.id.btn_client_data);
-        mBtnHttpClient = (Button) findViewById(R.id.btn_http_client);
+//        mBtnSendOkhttp = (Button) findViewById(R.id.btn_send_okhttp);
+//        mBtnSendUrl = (Button) findViewById(R.id.btn_send_url);
+//        mBtnSendAct = (Button) findViewById(R.id.btn_send_act);
+//        mBtnChange2webview = (Button) findViewById(R.id.btn_change2webview);
+//        mBtnChangeActivity = (Button) findViewById(R.id.btn_change_activity);
+//        mBtnManualError = (Button) findViewById(R.id.btn_manual_error);
+//        mBtnAutoError = (Button) findViewById(R.id.btn_auto_error);
+//        mBtnChangeMode = (Button) findViewById(R.id.btn_change_mode);
+//        mBtnBindMuid = (Button) findViewById(R.id.btn_bind_muid);
+//        mBtnClientData = (Button) findViewById(R.id.btn_client_data);
+//        mBtnHttpClient = (Button) findViewById(R.id.btn_http_client);
 
     }
 

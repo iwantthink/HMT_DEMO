@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="hmtdemo.hmt.com.hmtdemo">
+          package="hmtdemo.hmt.com.hmtdemo">
 
     <application
         android:name=".BaseApplication"
@@ -11,19 +11,32 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ViewActivity"/>
-        <activity android:name=".SeconedActivity"/>
-        <meta-data android:name="HMT_APPKEY" android:value="YOUR_APP_KEY" />
-        <meta-data android:name="HMT_CHANNEL" android:value="YOUR_CHANNEL" />
-        <meta-data android:name="HMT_TRACKEDURL" android:value="*" />
+        <activity
+            android:name=".ViewActivity">
+
+        </activity>
+        <activity
+            android:name=".SeconedActivity">
+        </activity>
+
+        <meta-data
+            android:name="HMT_APPKEY"
+            android:value="YOUR_APP_KEY"/>
+        <meta-data
+            android:name="HMT_CHANNEL"
+            android:value="YOUR_CHANNEL"/>
+        <meta-data
+            android:name="HMT_TRACKEDURL"
+            android:value="*"/>
     </application>
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>

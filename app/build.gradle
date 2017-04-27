@@ -1,6 +1,16 @@
 apply plugin: 'com.android.application'
-apply plugin: 'HMTPlugin'
+//apply plugin: 'HMTPlugin'
+
 android {
+    signingConfigs {
+        releaseConfig {
+
+            keyAlias '123456'
+            keyPassword '123456'
+            storeFile file('E:/github/HMT_DEMO/app/hmtdemo.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
     useLibrary 'org.apache.http.legacy'
@@ -15,8 +25,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
         }
-        debug{
+        debug {
             versionNameSuffix '.debug'
         }
     }
@@ -25,7 +36,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-//    compile 'com.hmt.analytics:hmt_sdk:1.0.3'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //    compile 'com.hmt.analytics:hmt_sdk:1.0.3'
     compile 'com.android.support:appcompat-v7:25.1.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'

@@ -37,7 +37,10 @@ public class SeconedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b);
         mContext = this;
+        HMTAgent.Initialize(mContext, 1);
         HMTAgent.onError(mContext); //监控页面错误信息
+
+
 
         bindMuid = (Button) findViewById(R.id.btn_bind_muid);
         bindMuid.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +83,7 @@ public class SeconedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                int i = 1 / 0;
+//                int i = 1 / 0;
             }
         });
 
