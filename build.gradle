@@ -11,7 +11,7 @@ buildscript {
     dependencies {
         //TODO 更改 version 看对插件的影响
         classpath 'com.android.tools.build:gradle:2.2.2'
-//        classpath 'com.hmt.analytics:hmt_agent:1.0.0'
+        classpath 'com.hmt.analytics:hmt_agent:1.0.2'
 //        classpath 'com.hmt.analytics.gradleplugin:gradle_plugin:1.0.1'
 //        classpath 'com.hmt.analytics.hmt_agent:hmt_agent:1.0.2'
         classpath fileTree(dir: 'plugin', include: '*.jar')
