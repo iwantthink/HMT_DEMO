@@ -2,6 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'HMTPlugin'
 
 android {
+
+    dexOptions {
+        maxProcessCount 4
+        javaMaxHeapSize '1g'
+
+    }
+
     signingConfigs {
         releaseConfig {
             keyAlias '123456'
