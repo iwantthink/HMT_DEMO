@@ -3,7 +3,6 @@ package hmtdemo.hmt.com.hmtdemo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +10,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.hmt.analytics.HMTAgent;
-import com.hmt.analytics.common.CommonUtil;
-import com.hmt.analytics.common.NetworkUitlity;
 import com.hmt.analytics.util.HParams;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +27,6 @@ import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -95,13 +96,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-//                HMTAgent.bindMuid(mContext, "sanmu");
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        SystemClock.sleep(2000);
-                    }
-                }).start();
+                String muid = HMTAgent.bindMuid(mContext, "sanmu");
+                Toast.makeText(mContext, muid, Toast.LENGTH_SHORT).show();
+
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        SystemClock.sleep(2000);
+//                    }
+//                }).start();
             }
         });
 
@@ -120,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread() {
                     @Override
                     public void run() {
-                        NetworkUitlity.get("https://www.baidu.com");
+//                        NetworkUitlity.get("https://www.baidu.com");
                     }
                 }.start();
             }
@@ -190,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread() {
                     @Override
                     public void run() {
-                        //sendOkHttp("http://www.baidu.com");
+                        ReqUtils.sendOkHttp("https://www.baidu.com");
                     }
                 }.start();
             }
@@ -203,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread() {
                     @Override
                     public void run() {
-                        String str = getURLResponse("http://www.baidu.com");
+                        String str = ReqUtils.getURLResponse("http://www.baidu.com");
                         System.out.print(str);
                     }
                 }.start();
@@ -226,28 +229,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*private void sendOkHttp(String url){
+    private void sendOkHttp(String url) {
         OkHttpClient mOkHttpClient = new OkHttpClient();
         final Request request = new Request.Builder()
                 .url(url)
                 .build();
         Call call = mOkHttpClient.newCall(request);
-        call.enqueue(new Callback()
-        {
+        call.enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e)
-            {
+            public void onFailure(Request request, IOException e) {
                 e.printStackTrace();
             }
 
             @Override
-            public void onResponse(final Response response) throws IOException
-            {
-                String htmlStr =  response.body().string();
+            public void onResponse(final Response response) throws IOException {
+                String htmlStr = response.body().string();
+                Log.d("MainActivity", htmlStr);
                 int code = response.code();
             }
         });
-    }*/
+    }
+
     private String getURLResponse(String urlString) {
         HttpURLConnection conn = null;
         InputStream is = null;
@@ -299,17 +301,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeMode() {
-        int mode = CommonUtil.getReportPolicyMode(mContext);
-        Log.d("MainActivity", "mode:" + mode);
-        if (mode == 0) {
-            CommonUtil.setReportPolicy(mContext, 1, "client");
-            CommonUtil.setReportPolicy(mContext, 1, "server");
-            Toast.makeText(mContext, "当前发送模式为 实时发送", Toast.LENGTH_SHORT).show();
-        } else {
-            CommonUtil.setReportPolicy(mContext, 0, "client");
-            CommonUtil.setReportPolicy(mContext, 0, "server");
-            Toast.makeText(mContext, "当前发送模式为 启动时发送", Toast.LENGTH_SHORT).show();
-        }
+//        int mode = CommonUtil.getReportPolicyMode(mContext);
+//        Log.d("MainActivity", "mode:" + mode);
+//        if (mode == 0) {
+//            CommonUtil.setReportPolicy(mContext, 1, "client");
+//            CommonUtil.setReportPolicy(mContext, 1, "server");
+//            Toast.makeText(mContext, "当前发送模式为 实时发送", Toast.LENGTH_SHORT).show();
+//        } else {
+//            CommonUtil.setReportPolicy(mContext, 0, "client");
+//            CommonUtil.setReportPolicy(mContext, 0, "server");
+//            Toast.makeText(mContext, "当前发送模式为 启动时发送", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     public void onResume() {

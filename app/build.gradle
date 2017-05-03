@@ -9,6 +9,11 @@ android {
 
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
+
     signingConfigs {
         releaseConfig {
             keyAlias '123456'
@@ -29,7 +34,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            debuggable true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.releaseConfig
         }
@@ -39,15 +45,25 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile name:'hmt_sdk-release',ext:'aar'
     testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    //    compile 'com.hmt.analytics:hmt_sdk:1.0.3'
+//    compile 'com.hmt.analytics:hmt_sdk:1.0.4'
     compile 'com.android.support:appcompat-v7:25.1.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+//    compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'cn.com.iresearch.sdk:idmapping:1.0.6'
 }
 

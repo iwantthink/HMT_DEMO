@@ -27,6 +27,9 @@ allprojects {
         maven {
             url "http://dpapi.irs01.com:8081/nexus/content/repositories/IRS-MT/"
         }
+        maven {
+            url "http://dpapi.irs01.com:8081/nexus/content/groups/public/"
+        }
     }
 }
 
