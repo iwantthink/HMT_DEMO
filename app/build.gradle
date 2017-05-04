@@ -1,6 +1,18 @@
+plugins{
+    id 'i.sdk' version '0.3'
+}
 apply plugin: 'com.android.application'
 apply plugin: 'HMTPlugin'
 
+
+iSDK{
+    enableMT true
+    enableSM false
+    enableFD false
+    appKey "aaa"
+    channel "ccc"
+    trackedURL "*"
+}
 android {
 
     dexOptions {
@@ -53,7 +65,7 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile name:'hmt_sdk-release',ext:'aar'
+//    compile name:'hmt_sdk-release',ext:'aar'
     testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
@@ -62,8 +74,10 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    compile 'com.squareup.okhttp:okhttp:2.7.5'
+//    compile 'com.squareup.okhttp:okhttp:2.7.5'
 //    compile 'com.squareup.okhttp3:okhttp:3.7.0'
-    compile 'cn.com.iresearch.sdk:idmapping:1.0.6'
+//    compile 'cn.com.iresearch.sdk:idmapping:1.0.6'
+
+
 }
 

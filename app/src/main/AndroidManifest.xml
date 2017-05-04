@@ -22,16 +22,6 @@
         <activity
             android:name=".SeconedActivity">
         </activity>
-
-        <meta-data
-            android:name="HMT_APPKEY"
-            android:value="YOUR_APP_KEY"/>
-        <meta-data
-            android:name="HMT_CHANNEL"
-            android:value="YOUR_CHANNEL"/>
-        <meta-data
-            android:name="HMT_TRACKEDURL"
-            android:value="*"/>
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
