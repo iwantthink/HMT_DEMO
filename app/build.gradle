@@ -1,5 +1,5 @@
 plugins{
-    id 'i.sdk' version '0.3'
+    id 'i.sdk' version '0.5'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'HMTPlugin'
