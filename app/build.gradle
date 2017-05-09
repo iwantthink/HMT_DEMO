@@ -1,18 +1,6 @@
-plugins{
-    id 'i.sdk' version '0.5'
-}
 apply plugin: 'com.android.application'
 apply plugin: 'HMTPlugin'
 
-
-iSDK{
-    enableMT true
-    enableSM false
-    enableFD false
-    appKey "aaa"
-    channel "ccc"
-    trackedURL "*"
-}
 android {
 
     dexOptions {
@@ -40,14 +28,14 @@ android {
     defaultConfig {
         applicationId "hmtdemo.hmt.com.hmtdemo"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
             debuggable true
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.releaseConfig
         }
@@ -74,9 +62,9 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-//    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
 //    compile 'com.squareup.okhttp3:okhttp:3.7.0'
-//    compile 'cn.com.iresearch.sdk:idmapping:1.0.6'
+    compile 'cn.com.iresearch.sdk:idmapping:1.0.6'
 
 
 }

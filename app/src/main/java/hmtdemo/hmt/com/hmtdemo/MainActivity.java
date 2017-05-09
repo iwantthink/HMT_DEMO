@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.hmt.analytics.HMTAgent;
+import com.hmt.analytics.common.CommonUtil;
 import com.hmt.analytics.util.HParams;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         initHMT();
         init();
         initListener();
+
+//        HMTInfoService.getInstance(getApplicationContext()).save();
 
     }
 
@@ -301,17 +304,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeMode() {
-//        int mode = CommonUtil.getReportPolicyMode(mContext);
-//        Log.d("MainActivity", "mode:" + mode);
-//        if (mode == 0) {
-//            CommonUtil.setReportPolicy(mContext, 1, "client");
-//            CommonUtil.setReportPolicy(mContext, 1, "server");
-//            Toast.makeText(mContext, "当前发送模式为 实时发送", Toast.LENGTH_SHORT).show();
-//        } else {
-//            CommonUtil.setReportPolicy(mContext, 0, "client");
-//            CommonUtil.setReportPolicy(mContext, 0, "server");
-//            Toast.makeText(mContext, "当前发送模式为 启动时发送", Toast.LENGTH_SHORT).show();
-//        }
+        int mode = CommonUtil.getReportPolicyMode(mContext);
+        Log.d("MainActivity", "mode:" + mode);
+        if (mode == 0) {
+            CommonUtil.setReportPolicy(mContext, 1, "client");
+            CommonUtil.setReportPolicy(mContext, 1, "server");
+            Toast.makeText(mContext, "当前发送模式为 实时发送", Toast.LENGTH_SHORT).show();
+        } else {
+            CommonUtil.setReportPolicy(mContext, 0, "client");
+            CommonUtil.setReportPolicy(mContext, 0, "server");
+            Toast.makeText(mContext, "当前发送模式为 启动时发送", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onResume() {
