@@ -31,6 +31,8 @@ public class ViewActivity extends Activity {
         });
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);
-        mWebView.loadUrl("https://www.baidu.com");
+        mWebView.loadUrl("file:///android_asset/x.html");
+//        HMTAgent.initWebView(mWebView, ViewActivity.this);
+
     }
 }

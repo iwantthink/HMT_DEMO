@@ -47,7 +47,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 HMTAgent.bindMuid(mContext, "sanmu");
             }
         });
@@ -57,7 +56,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 HMTAgent.postClientData(mContext);
             }
         });
@@ -67,7 +65,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread() {
                     @Override
                     public void run() {
@@ -82,7 +79,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
 //                int i = 1 / 0;
             }
         });
@@ -92,7 +88,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 try {
                     int i = 1 / 0;
                 } catch (Exception e) {
@@ -107,7 +102,7 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
                 jump_view();
             }
         });
@@ -117,7 +112,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 jump_b();
             }
         });
@@ -127,7 +121,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 HMTAgent.onAction(mContext, "自定义事件");
             }
         });
@@ -137,7 +130,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread() {
                     @Override
                     public void run() {
@@ -152,7 +144,6 @@ public class SeconedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new Thread() {
                     @Override
                     public void run() {
